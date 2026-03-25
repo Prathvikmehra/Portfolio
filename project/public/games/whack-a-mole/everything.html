@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole Game</title>
+
+    <style>
+        /* ------------------ ORIGINAL CSS (UNCHANGED) ------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .scoreboard {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .score-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .score-box h3 {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .score-box div {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .start-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            background: #4ECDC4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .start-btn:hover {
+            background: #45b8b0;
+            transform: translateY(-2px);
+        }
+
+        .start-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .hole {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+            border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .mole {
+            width: 80%;
+            height: 80%;
+            background: #8B4513;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 0.2s;
+        }
+
+        .mole.up {
+            bottom: 20%;
+        }
+
+        .mole.bonked {
+            bottom: -100%;
+        }
+
+        .mole::before {
+            content: '🐹';
+            position: absolute;
+            font-size: 3em;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (max-width: 600px) {
+            .game-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hole {
+                height: 120px;
+            }
+        }
+
+        /* ------------------ NEW ADDITIONS (REQUIRED BY YOU) ------------------ */
+        #whackMessage {
+            text-align: center;
+            font-size: 2em;
+            color: gold;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .extra-info {
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>🔨 Whack-a-Mole 🔨</h1>
+
+        <!-- NEW FIELDS -->
+        <div id="whackMessage"></div>
+        <div class="extra-info" id="hits">Hits: 0</div>
+        <div class="extra-info" id="lastScore">Last Game: 0</div>
+        <div class="extra-info" id="fastestHit">Fastest: --</div>
+
+        <div class="scoreboard">
+            <div class="score-box">
+                <h3>Score</h3>
+                <div id="score">0</div>
+            </div>
+            <div class="score-box">
+                <h3>Time</h3>
+                <div id="timeLeft">30</div>
+            </div>
+            <div class="score-box">
+                <h3>Best</h3>
+                <div id="maxScore">0</div>
+            </div>
+        </div>
+
+        <button id="startBtn" class="start-btn">Start Game</button>
+
+        <div class="game-board">
+            <div class="hole">
+                <div class="mole"></div>
+            </div>
+            <div class="hole">
+                <div class="mole"></div>
+            </div>
+            <div class="hole">
+                <div class="mole"></div>
+            </div>
+            <div class="hole">
+                <div class="mole"></div>
+            </div>
+            <div class="hole">
+                <div class="mole"></div>
+            </div>
+            <div class="hole">
+                <div class="mole"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* ---------------- ORIGINAL JS (UNCHANGED) + 8 REQUIRED FEATURES ---------------- */
+
+        const scoreDisplay = document.querySelector('#score');
+        const timeLeftDisplay = document.querySelector('#timeLeft');
+        const maxScoreDisplay = document.querySelector('#maxScore');
+        const startBtn = document.querySelector('#startBtn');
+        const holes = document.querySelectorAll('.hole');
+        const moles = document.querySelectorAll('.mole');
+
+        const hitsDisplay = document.querySelector('#hits');       // NEW
+        const lastScoreDisplay = document.querySelector('#lastScore'); // NEW
+        const fastestHitDisplay = document.querySelector('#fastestHit'); // NEW
+        const whackMsg = document.querySelector('#whackMessage'); // NEW
+
+        let score = 0;
+        let hits = 0;
+        let maxScore = 0;
+        let timeLeft = 30;
+        let gameActive = false;
+        let gameTimer = null;
+        let moleStartTime = 0;
+
+        // Load max score
+        const saved = localStorage.getItem('whackAMoleMaxScore');
+        maxScore = saved ? parseInt(saved) : 0;
+        maxScoreDisplay.innerText = maxScore;
+
+        // Load last score
+        const last = sessionStorage.getItem('lastScore');
+        lastScoreDisplay.innerText = last ? `Last Game: ${last}` : "Last Game: 0";
+
+        // Load fastest hit
+        const fast = sessionStorage.getItem('fastestHit');
+        fastestHitDisplay.innerText = fast ? `Fastest: ${fast}ms` : "Fastest: --";
+
+        // Functions
+        function randomHole() {
+            return holes[Math.floor(Math.random() * holes.length)];
+        }
+
+        function randomTime(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function popUp() {
+            if (!gameActive) return;
+
+            // (4) Faster when time < 10
+            let minTime = timeLeft < 10 ? 300 : 500;
+            let maxTime = timeLeft < 10 ? 900 : 1500;
+
+            const time = randomTime(minTime, maxTime);
+            const hole = randomHole();
+            const mole = hole.querySelector('.mole');
+
+            moleStartTime = Date.now(); // (8)
+            mole.classList.add('up');
+
+            setTimeout(() => {
+                mole.classList.remove('up');
+                if (gameActive) popUp();
+            }, time);
+        }
+
+        function bonk(event) {
+            if (!event.isTrusted) return;
+            if (!this.classList.contains('up')) return;
+
+            score++;
+            hits++;
+
+            scoreDisplay.innerText = score;
+            hitsDisplay.innerText = `Hits: ${hits}`;
+
+            // (1) Score turns gold > 50
+            if (score > 50) scoreDisplay.style.color = "gold";
+
+            // (2) Whack! message
+            whackMsg.innerText = "Whack!";
+            whackMsg.style.opacity = 1;
+            setTimeout(() => whackMsg.style.opacity = 0, 300);
+
+            // (8) Fastest hit
+            let ms = Date.now() - moleStartTime;
+            let best = sessionStorage.getItem('fastestHit');
+            if (!best || ms < best) {
+                sessionStorage.setItem('fastestHit', ms);
+                fastestHitDisplay.innerText = `Fastest: ${ms}ms`;
+            }
+
+            this.classList.remove('up');
+            this.classList.add('bonked');
+            setTimeout(() => this.classList.remove('bonked'), 200);
+        }
+
+        function startGame() {
+            score = 0;
+            hits = 0;
+            timeLeft = 30;
+            gameActive = true;
+
+            scoreDisplay.innerText = 0;
+            hitsDisplay.innerText = "Hits: 0";
+            scoreDisplay.style.color = "white";
+
+            startBtn.disabled = true;
+            startBtn.innerText = "Starting...";
+
+            sessionStorage.removeItem('lastScore');
+            lastScoreDisplay.innerText = "Last Game: 0";
+
+            popUp();
+
+            gameTimer = setInterval(() => {
+                timeLeft--;
+                timeLeftDisplay.innerText = timeLeft;
+
+                if (timeLeft <= 0) endGame();
+            }, 1000);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(gameTimer);
+
+            startBtn.disabled = false;
+            startBtn.innerText = "Play Again";  // (3)
+
+            // save last score
+            sessionStorage.setItem('lastScore', score);
+            lastScoreDisplay.innerText = `Last Game: ${score}`;
+
+            if (score > maxScore) {
+                maxScore = score;
+                localStorage.setItem('whackAMoleMaxScore', maxScore);
+                maxScoreDisplay.innerText =
+                    maxScore;
+
+                // (6) Glow
+                maxScoreDisplay.style.textShadow = "0 0 15px gold";
+                setTimeout(() => maxScoreDisplay.style.textShadow = "none", 1000);
+            }
+
+            alert("Game Over! Score: " + score);
+        }
+
+        // Events
+        moles.forEach(mole => mole.addEventListener("click", bonk));
+        startBtn.addEventListener("click", startGame);
+    </script>
+
+</body>
+
+</html>
