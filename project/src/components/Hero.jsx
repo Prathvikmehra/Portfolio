@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode } from 'react-icons/si';
 import profilePic from '../assets/profile.jpg';
 
@@ -107,6 +108,26 @@ const Hero = () => {
                             onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
                         >
                             <SiLeetcode />
+                        </a>
+                        <a
+                            href="https://www.youtube.com/@Prathvikmehra-ct3rs"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: '1.9rem', color: 'var(--text-secondary)', transition: 'color 0.3s' }}
+                            onMouseEnter={(e) => e.currentTarget.style.color = '#FF0000'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+                        >
+                            <FaYoutube />
+                        </a>
+                        <a
+                            href="https://x.com/prathvik2345"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: '1.9rem', color: 'var(--text-secondary)', transition: 'color 0.3s' }}
+                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text-primary)'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+                        >
+                            <FaXTwitter />
                         </a>
                     </div>
 
