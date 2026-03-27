@@ -24,9 +24,9 @@ function App() {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <AboutSkills />
-      <Education />
       <Projects />
       <Certificates />
+      <Education />
       <Contact />
       <Footer />
     </div>
