@@ -8,31 +8,31 @@ const socialLinks = [
     icon: <FaGithub />,
     href: 'https://github.com/Prathvikmehra',
     label: 'GitHub',
-    hoverColor: 'var(--text-primary)',
+    hoverColor: 'var(--accent-primary)',
   },
   {
     icon: <FaLinkedin />,
     href: 'https://www.linkedin.com/in/prathvik-mehra-9a3398379/',
     label: 'LinkedIn',
-    hoverColor: '#0077B5',
+    hoverColor: 'var(--accent-primary)',
   },
   {
     icon: <SiLeetcode />,
     href: 'https://leetcode.com/u/phantomleo/',
     label: 'LeetCode',
-    hoverColor: '#FFA116',
+    hoverColor: 'var(--accent-primary)',
   },
   {
     icon: <FaYoutube />,
     href: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
     label: 'YouTube',
-    hoverColor: '#FF0000',
+    hoverColor: 'var(--accent-primary)',
   },
   {
     icon: <FaXTwitter />,
     href: 'https://x.com/prathvik2345',
     label: 'X / Twitter',
-    hoverColor: 'var(--text-primary)',
+    hoverColor: 'var(--accent-primary)',
   },
 ];
 

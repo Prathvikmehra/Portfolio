@@ -10,21 +10,21 @@ const contactItems = [
     label: 'Phone',
     value: '+91 7990331154',
     href: 'tel:+917990331154',
-    hoverColor: '#25d366',
+    hoverColor: 'var(--accent-primary)',
   },
   {
     icon: <FaEnvelope />,
     label: 'Email',
     value: 'prathvikmehra@gmail.com',
     href: 'mailto:prathvikmehra@gmail.com',
-    hoverColor: '#3b82f6',
+    hoverColor: 'var(--accent-primary)',
   },
   {
     icon: <FaWhatsapp />,
     label: 'WhatsApp',
     value: '+91 6351675191',
     href: 'https://wa.me/916351675191',
-    hoverColor: '#25d366',
+    hoverColor: 'var(--accent-primary)',
   },
 ];
 

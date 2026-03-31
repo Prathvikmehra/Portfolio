@@ -7,21 +7,21 @@ const educationData = [
     degree: "Computer Engineering",
     score: "Pursuing",
     year: "2025 - Present",
-    color: "#3b82f6"
+    color: "#a3e635" // Lime
   },
   {
     institution: "Swaminarayan International School (HSC)",
     degree: "Science Stream",
     score: "76.9%",
     year: "2024",
-    color: "#a855f7"
+    color: "#65a30d" // Green
   },
   {
     institution: "Kendriya Vidyalaya (SSC)",
     degree: "General",
     score: "82.8%",
     year: "2022",
-    color: "#f59e0b"
+    color: "#365314" // Dark Green
   }
 ];
 

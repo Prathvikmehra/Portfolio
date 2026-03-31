@@ -21,6 +21,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <div className="noise-overlay" />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <AboutSkills />

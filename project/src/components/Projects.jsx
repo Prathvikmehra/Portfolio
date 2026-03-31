@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGamepad, FaCode, FaPlay } from 'react-icons/fa';
+import { FaGamepad, FaCode, FaPlay, FaArrowRight } from 'react-icons/fa';
 import cantabilImg from '../assets/cantabil.png';
 import stanleyImg from '../assets/stanley.png';
 import cutsImg from '../assets/cuts.png';
@@ -11,313 +11,195 @@ import todoListImg from '../assets/todo-list.png';
 
 const projectsData = [
   {
-    title: 'Color Guesser Game',
-    description: 'Test your color recognition skills in this fun and interactive RGB guessing game.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    image: colorGuesserImg,
-    link: '/games/color-guesser/index.html',
-    isGame: true,
-  },
-  {
-    title: 'Typing Speed Game',
-    description: 'Challenge your typing speed and accuracy with this neon-styled typing test game.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    image: typingGameImg,
-    link: '/games/typing-game/index.html',
-    isGame: true,
-  },
-  {
-    title: 'Whack-a-Mole',
-    description: 'Classic arcade fun! Whack the moles as they pop up before they disappear to score points.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    image: whackAMoleImg,
-    link: '/games/whack-a-mole/index.html',
-    isGame: true,
-  },
-  {
-    title: 'To-Do List App',
-    description: 'A clean and productive task management app to organize your daily goals efficiently.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    image: todoListImg,
-    link: '/games/todo-list/index.html',
-    isGame: true,
-  },
-  {
+    id: '01',
     title: 'Cantabil Clone',
+    category: 'E-COMMERCE CLONE',
     description: 'A pixel-perfect clone of the Cantabil e-commerce website, featuring responsive design and modern UI/UX patterns built with pure HTML & CSS.',
-    tags: ['HTML', 'CSS', 'Netlify'],
+    tags: ['HTML', 'CSS', 'Vite'],
     image: cantabilImg,
     githubLink: 'https://github.com/Prathvikmehra/clone-websites',
     demoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
   },
   {
+    id: '02',
     title: 'Stanley Clone',
+    category: 'LANDING PAGE',
     description: 'A visually stunning landing page clone for Stanley, focusing on product showcase and smooth scroll animations using clean CSS techniques.',
-    tags: ['HTML', 'CSS', 'Netlify'],
+    tags: ['HTML', 'CSS', 'UI/UX'],
     image: stanleyImg,
     githubLink: 'https://github.com/Prathvikmehra/clone-websites',
     demoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
   },
   {
+    id: '03',
     title: 'Cuts Clothing Clone',
+    category: 'FASHION STORE',
     description: 'A clean and minimal clone of the Cuts Clothing website, demonstrating mastery of CSS grid layouts, typography, and responsive design.',
-    tags: ['HTML', 'CSS', 'Netlify'],
+    tags: ['CSS Grid', 'Responsive', 'Flexbox'],
     image: cutsImg,
     githubLink: 'https://github.com/Prathvikmehra/clone-websites',
     demoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
   },
 ];
 
+const gamesData = [
+  { title: 'Color Guesser', image: colorGuesserImg, link: '/games/color-guesser/index.html', description: 'Test your RGB color knowledge by guessing the correct values in this fun interactive game.' },
+  { title: 'Typing Speed', image: typingGameImg, link: '/games/typing-game/index.html', description: 'Challenge your WPM and accuracy with this real-time typing speed test and keyboard trainer.' },
+  { title: 'Whack-a-Mole', image: whackAMoleImg, link: '/games/whack-a-mole/index.html', description: 'Classic arcade fun! Hit those moles as fast as they pop up to reach the highest score.' },
+  { title: 'To-Do List', image: todoListImg, link: '/games/todo-list/index.html', description: 'A sleek and functional productivity app to keep your daily tasks organized and on track.' },
+];
+
 const Projects = () => {
-  const games = projectsData.filter(p => p.isGame);
-  const cloneProjects = projectsData.filter(p => !p.isGame);
-  const marqueeGames = [...games, ...games];
+    // Only include games in the marquee to remove clones (which link to videos)
+    const allGames = gamesData.map((g, i) => ({ 
+        id: `G${i}`, 
+        title: g.title, 
+        image: g.image, 
+        demoLink: g.link, 
+        description: g.description,
+        category: 'MINI GAME' 
+    }));
 
-  return (
-    <section id="projects" className="section">
-      <h2>Featured Projects</h2>
-
-      {/* ── Games Marquee ── */}
-      <h3 className="subsection-title">Interactive Games</h3>
-      <div className="marquee-container">
-        <div className="marquee-track">
-          {marqueeGames.map((game, index) => (
-            <div key={index} className="marquee-item">
-              <a href={game.link} target="_blank" rel="noopener noreferrer" className="game-card">
-                <img src={game.image} alt={game.title} className="game-thumb" />
-                <div className="game-info">
-                  <div style={{ flex: 1 }}>
-                    <h4>{game.title}</h4>
-                    <p className="game-desc">{game.description}</p>
-                  </div>
-                  <FaGamepad className="game-icon" />
+    return (
+        <section id="projects" style={{ padding: '8rem 0', background: 'transparent' }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+                
+                {/* Section Header */}
+                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                    <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        gap: '0.8rem', 
+                        marginBottom: '1rem' 
+                    }}>
+                        <span style={{ width: '12px', height: '1px', background: 'var(--accent-primary)' }}></span>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>My Works</span>
+                        <span style={{ width: '12px', height: '1px', background: 'var(--accent-primary)' }}></span>
+                    </div>
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 900, marginBottom: '1rem' }}>
+                        Portfolio Showcase<span style={{ color: 'var(--accent-primary)' }}>.</span>
+                    </h2>
                 </div>
-              </a>
+
+                {/* Projects Grid (The Clones) */}
+                <div style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', 
+                    gap: '2.5rem',
+                    marginBottom: '8rem'
+                }}>
+                    {projectsData.map((project, index) => (
+                        <motion.div 
+                            key={project.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            style={{ 
+                                background: 'var(--bg-secondary)',
+                                borderRadius: '16px',
+                                overflow: 'hidden',
+                                border: '1px solid rgba(255,255,255,0.05)',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                transition: 'all 0.3s ease',
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+                            }}
+                            onMouseEnter={e => {
+                                e.currentTarget.style.borderColor = 'rgba(163, 230, 53, 0.3)';
+                                e.currentTarget.style.transform = 'translateY(-5px)';
+                            }}
+                            onMouseLeave={e => {
+                                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                                e.currentTarget.style.transform = 'translateY(0)';
+                            }}
+                        >
+                            <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                                <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(26, 29, 21, 0.9)', color: 'var(--accent-primary)', padding: '0.3rem 0.8rem', borderRadius: '100px', fontSize: '0.65rem', fontWeight: 800, border: '1px solid rgba(163, 230, 53, 0.2)' }}>
+                                    {project.category}
+                                </div>
+                            </div>
+                            <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                                <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '1rem' }}>{project.title}</h3>
+                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem', flex: 1 }}>{project.description}</p>
+                                <div style={{ display: 'flex', gap: '0.6rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
+                                    {project.tags.map(tag => (
+                                        <span key={tag} style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', opacity: 0.8, fontWeight: 600 }}>#{tag}</span>
+                                    ))}
+                                </div>
+                                <div style={{ display: 'flex', gap: '1.5rem', marginTop: 'auto' }}>
+                                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.8rem' }}><FaCode /> CODE</a>
+                                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 700, fontSize: '0.8rem' }}>LIVE DEMO <FaArrowRight /></a>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
 
-      {/* ── Clone Projects Grid ── */}
-      <h3 className="subsection-title" style={{ marginTop: '4rem' }}>Web Projects</h3>
-      <div className="grid-projects">
-        {cloneProjects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.15 }}
-            viewport={{ once: true }}
-            className="card"
-            style={{ padding: 0, overflow: 'hidden' }}
-          >
-            {/* Project Image */}
-            <img
-              src={project.image}
-              alt={project.title}
-              style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
-            />
+            {/* Games Moving Marquee Section */}
+            <div style={{ overflow: 'hidden', padding: '4rem 0', position: 'relative' }}>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h3 style={{ fontSize: '2rem', fontWeight: 900 }}>Arcade Zone<span style={{ color: 'var(--accent-primary)' }}>.</span></h3>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Classic mini-games — hover to play</p>
+                </div>
 
-            {/* Project Info */}
-            <div style={{ padding: '1.4rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: 0 }}>{project.title}</h3>
-
-              <p style={{
-                color: 'var(--text-secondary)',
-                fontSize: '0.93rem',
-                lineHeight: 1.65,
-                marginBottom: 0,
-              }}>
-                {project.description}
-              </p>
-
-              {/* Tags */}
-              <div className="project-tags">
-                {project.tags.map(tag => (
-                  <span key={tag} className="tag">{tag}</span>
-                ))}
-              </div>
-
-              {/* Action Buttons */}
-              <div style={{ display: 'flex', gap: '0.7rem', flexWrap: 'wrap', marginTop: '0.25rem' }}>
-                {/* View Code */}
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.45rem',
-                    padding: '0.55rem 1.1rem',
-                    background: 'transparent',
-                    border: '1.5px solid var(--accent-primary)',
-                    borderRadius: '8px',
-                    color: 'var(--accent-primary)',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    transition: 'all 0.25s ease',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.background = 'var(--accent-primary)';
-                    e.currentTarget.style.color = '#fff';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.color = 'var(--accent-primary)';
-                  }}
-                >
-                  <FaCode size={13} /> View Code
-                </a>
-
-                {/* Live Demo */}
-                <a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.45rem',
-                    padding: '0.55rem 1.1rem',
-                    background: 'var(--accent-primary)',
-                    border: '1.5px solid var(--accent-primary)',
-                    borderRadius: '8px',
-                    color: '#fff',
-                    fontSize: '0.88rem',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    transition: 'all 0.25s ease',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.opacity = '0.85';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <FaPlay size={11} /> Live Demo
-                </a>
-              </div>
+                <div style={{ display: 'flex', width: 'fit-content' }}>
+                    <motion.div 
+                        animate={{ x: ['0%', '-50%'] }}
+                        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                        style={{ display: 'flex', gap: '2.5rem', padding: '0 1rem' }}
+                    >
+                        {/* Duplicate the array for a seamless loop */}
+                        {[...allGames, ...allGames].map((item, idx) => (
+                            <motion.a 
+                                key={idx}
+                                href={item.demoLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ y: -10 }}
+                                style={{
+                                    width: '350px',
+                                    flexShrink: 0,
+                                    background: 'var(--bg-secondary)',
+                                    borderRadius: '16px',
+                                    overflow: 'hidden',
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    display: 'block',
+                                    textDecoration: 'none',
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+                                }}
+                                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(163, 230, 53, 0.4)'}
+                                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                            >
+                                <div style={{ position: 'relative', height: '180px', overflow: 'hidden' }}>
+                                    <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)' }} />
+                                    <div style={{ position: 'absolute', bottom: '1rem', left: '1.2rem' }}>
+                                        <h4 style={{ margin: 0, color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 800 }}>{item.title}</h4>
+                                    </div>
+                                </div>
+                                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: 1.5 }}>
+                                        {item.description}
+                                    </p>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
+                                        <span style={{ fontSize: '0.65rem', color: 'var(--accent-primary)', fontWeight: 800, letterSpacing: '2px', textTransform: 'uppercase' }}>PLAY NOW</span>
+                                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(163, 230, 53, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <FaPlay style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', marginLeft: '2px' }} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.a>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
-
-      <style>{`
-        .subsection-title {
-          font-size: 1.8rem;
-          margin-bottom: 2rem;
-          color: var(--text-primary);
-          padding-left: 0.5rem;
-          border-left: 4px solid var(--accent-primary);
-        }
-
-        .marquee-container {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          overflow: hidden;
-          background: rgba(0,0,0,0.2);
-          padding: 2rem 0;
-          position: relative;
-        }
-
-        .marquee-container::before,
-        .marquee-container::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          width: 100px;
-          height: 100%;
-          z-index: 2;
-        }
-
-        .marquee-container::before {
-          left: 0;
-          background: linear-gradient(to right, var(--bg-primary), transparent);
-        }
-
-        .marquee-container::after {
-          right: 0;
-          background: linear-gradient(to left, var(--bg-primary), transparent);
-        }
-
-        .marquee-track {
-          display: flex;
-          gap: 2rem;
-          width: max-content;
-          animation: scroll 20s linear infinite;
-        }
-
-        .marquee-container:hover .marquee-track {
-          animation-play-state: paused;
-        }
-
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-50% - 1rem)); }
-        }
-
-        .marquee-item {
-          width: 300px;
-          flex-shrink: 0;
-        }
-
-        .game-card {
-          display: block;
-          background: var(--card-bg);
-          border: 1px solid var(--card-border);
-          border-radius: 12px;
-          overflow: hidden;
-          text-decoration: none;
-          transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .game-card:hover {
-          transform: translateY(-5px);
-          border-color: var(--accent-primary);
-        }
-
-        .game-thumb {
-          width: 100%;
-          height: 180px;
-          object-fit: cover;
-          display: block;
-        }
-
-        .game-info {
-          padding: 1rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 0.5rem;
-          color: var(--text-primary);
-        }
-
-        .game-info h4 {
-          margin: 0 0 0.3rem 0;
-          font-size: 1rem;
-        }
-
-        .game-desc {
-          margin: 0;
-          font-size: 0.8rem;
-          color: var(--text-secondary);
-          line-height: 1.5;
-        }
-
-        .game-icon {
-          color: var(--accent-primary);
-          font-size: 1.2rem;
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-      `}</style>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default Projects;
