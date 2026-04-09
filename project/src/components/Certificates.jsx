@@ -8,6 +8,7 @@ import tcsImg from '../assets/tcs-certificate.jpg';
 import codingDataImg from '../assets/coding-data-certificate.jpg';
 import hackathonPdf from '../assets/hackathon-certificate.pdf';
 import claudeCodePdf from '../assets/claude-code-certificate.pdf';
+import bytebattleImg from '../assets/bytebattle-certificate.png';
 
 const certificates = [
   {
@@ -47,6 +48,15 @@ const certificates = [
   },
   {
     id: 5,
+    image: bytebattleImg,
+    link: bytebattleImg,
+    title: 'ByteBattle 2026',
+    description: 'Certificate of Participation from Swaminarayan University & InfoTechiezz for The Ultimate Coding Showdown.',
+    linkLabel: 'View Certificate',
+    type: 'image'
+  },
+  {
+    id: 6,
     link: claudeCodePdf,
     title: 'Claude Code in Action',
     description: 'Certificate of Completion from Anthropic demonstrating practical proficiency in leveraging advanced AI systems.',
