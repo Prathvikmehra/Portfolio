@@ -569,11 +569,8 @@ section {
 
 /* When scrolled, apply background based on theme variable loaded in :root */
 .navbar.scrolled {
-  background: var(--bg-primary);
-  /* We can add opacity if we want true translucency, e.g. using rgba on the variable, 
-     but since variables are hex, we'll use a semi-transparent override or backdrop-filter 
-     which is already there. Let's rely on backdrop-filter and a high-alpha background */
-  background: color-mix(in srgb, var(--bg-primary), transparent 10%);
+  /* No background on the outer wrapper to prevent the floating rectangle bug */
+  background: transparent;
 }
 
 /* Contact Blend */
