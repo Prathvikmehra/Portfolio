@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt, FaAward } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 import intellipaatPdf from '../assets/intellipaat-certificate.pdf';
 import intellipaatImg from '../assets/intellipaat-certificate.png';
@@ -55,87 +55,88 @@ const certificates = [
   }
 ];
 
-const PdfPlaceholder = () => (
-  <div style={{
-    width: '100%',
-    height: '100%',
-    minHeight: '220px',
-    background: 'linear-gradient(135deg, var(--bg-secondary) 0%, rgba(163, 230, 53, 0.05) 100%)',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottom: '1px solid var(--card-border)',
-    color: 'var(--text-secondary)'
-  }}>
-    <FaAward size={64} style={{ color: 'var(--accent-primary)', marginBottom: '1rem', opacity: 0.8 }} />
-    <span style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--text-primary)' }}>Official Credential</span>
-    <span style={{ fontSize: '0.85rem', opacity: 0.7, marginTop: '0.5rem' }}>(PDF Document)</span>
-  </div>
-);
-
 const Certificates = () => {
     return (
-        <section id="certificates" className="section">
-            <h2>Certifications</h2>
-            <div className={`certificates-grid ${certificates.length % 2 !== 0 ? 'odd-layout' : ''}`}>
-                {certificates.map((cert, index) => (
-                    <motion.div
-                        key={cert.id}
-                        className="card"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.15 }}
-                        style={{
-                            padding: '0',
-                            overflow: 'hidden',
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column'
-                        }}
+        <section id="certificates" style={{ overflow: 'hidden', padding: '8rem 0', position: 'relative', background: 'transparent' }}>
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        gap: '0.8rem', 
+                        marginBottom: '1rem' 
+                    }}>
+                        <span style={{ width: '12px', height: '1px', background: 'var(--accent-primary)' }}></span>
+                        <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>Achievements</span>
+                        <span style={{ width: '12px', height: '1px', background: 'var(--accent-primary)' }}></span>
+                </div>
+                <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 900, marginBottom: '1rem' }}>
+                    Certifications<span style={{ color: 'var(--accent-primary)' }}>.</span>
+                </h2>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Recognitions & completed programs</p>
+            </div>
+
+            <div style={{ display: 'flex', width: 'fit-content' }}>
+                 <motion.div 
+                        animate={{ x: ['0%', '-50%'] }}
+                        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                        style={{ display: 'flex', gap: '2.5rem', padding: '0 1rem' }}
                     >
-                        <a
-                            href={cert.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', height: '100%' }}
-                        >
-                            <div className="cert-media" style={{ flexShrink: 0 }}>
-                                {cert.type === 'image' ? (
-                                    <img
-                                        src={cert.image}
-                                        alt={cert.title}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
-                                ) : (
-                                    <PdfPlaceholder />
-                                )}
-                            </div>
-                            
-                            <div className="cert-content" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.8rem' }}>{cert.title}</h3>
-                                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1 }}>
-                                    {cert.description}
-                                </p>
-                                <div style={{ 
-                                    display: 'inline-flex', 
-                                    alignItems: 'center', 
-                                    gap: '0.5rem', 
-                                    color: 'var(--text-primary)', 
-                                    fontWeight: '600',
-                                    padding: '0.6rem 1.2rem',
-                                    background: 'rgba(163, 230, 53, 0.1)',
-                                    borderRadius: '50px',
-                                    border: '1px solid rgba(163, 230, 53, 0.2)',
-                                    width: 'fit-content'
-                                }}>
-                                    <span style={{ color: 'var(--accent-primary)' }}>{cert.linkLabel}</span> <FaExternalLinkAlt size={12} color="var(--accent-primary)" />
+                        {/* Duplicate the array for a seamless loop */}
+                        {[...certificates, ...certificates].map((cert, idx) => (
+                            <motion.a 
+                                key={`${cert.id}-${idx}`}
+                                href={cert.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ y: -10 }}
+                                style={{
+                                    width: '380px',
+                                    flexShrink: 0,
+                                    background: 'var(--bg-secondary)',
+                                    borderRadius: '16px',
+                                    overflow: 'hidden',
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    display: 'block',
+                                    textDecoration: 'none',
+                                    transition: 'all 0.3s ease',
+                                    boxShadow: '0 4px 20px rgba(0,0,0,0.2)'
+                                }}
+                                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(163, 230, 53, 0.4)'}
+                                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'}
+                            >
+                                <div style={{ position: 'relative', height: '230px', overflow: 'hidden', background: '#e5e7eb' }}>
+                                    {cert.type === 'image' ? (
+                                        <img src={cert.image} alt={cert.title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                    ) : (
+                                        <>
+                                            <iframe 
+                                              src={`${cert.link}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} 
+                                              title={cert.title} 
+                                              style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }} 
+                                              scrolling="no" 
+                                              tabIndex="-1"
+                                            />
+                                            {/* Click capture overlay */}
+                                            <div style={{ position: 'absolute', inset: 0, zIndex: 10, background: 'transparent' }} />
+                                        </>
+                                    )}
                                 </div>
-                            </div>
-                        </a>
+                                <div style={{ padding: '1.8rem', display: 'flex', flexDirection: 'column', gap: '1rem', minHeight: '180px' }}>
+                                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0 }}>{cert.title}</h3>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: 1.6, flex: 1 }}>
+                                        {cert.description}
+                                    </p>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
+                                        <span style={{ fontSize: '0.7rem', color: 'var(--accent-primary)', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>{cert.linkLabel}</span>
+                                        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(163, 230, 53, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <FaExternalLinkAlt style={{ color: 'var(--accent-primary)', fontSize: '0.7rem' }} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.a>
+                        ))}
                     </motion.div>
-                ))}
             </div>
         </section>
     );
