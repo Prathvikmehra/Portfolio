@@ -51,7 +51,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
   return (
     <motion.nav
-      className="navbar"
+      className={`navbar ${scrolled ? 'scrolled' : ''}`}
       initial={{ y: -100, x: '-50%' }}
       animate={{ y: 0, x: '-50%' }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -68,8 +68,8 @@ const Navbar = ({ theme, toggleTheme }) => {
             >
               <Link
                 to={item.name}
-                smooth={true}
-                duration={500}
+                smooth="easeInOutQuart"
+                duration={800}
                 offset={-70}
                 spy={true}
                 activeClass="active-capsule"
@@ -86,9 +86,15 @@ const Navbar = ({ theme, toggleTheme }) => {
                   transition: 'all 0.3s ease',
                 }}
               >
-                <div className="nav-icon-wrapper">
+                <motion.div 
+                  className="nav-icon-wrapper"
+                  whileTap={{ scale: 0.75 }}
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
                   {item.icon}
-                </div>
+                </motion.div>
               </Link>
               
               <AnimatePresence>
@@ -143,7 +149,14 @@ const Navbar = ({ theme, toggleTheme }) => {
             onMouseEnter={() => setHoveredItem('theme')}
             onMouseLeave={() => setHoveredItem(null)}
           >
-            {theme === 'dark' ? <HiOutlineSun /> : <HiOutlineMoon />}
+            <motion.div
+              whileTap={{ scale: 0.75, rotate: 180 }}
+              whileHover={{ scale: 1.15 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              style={{ display: 'flex' }}
+            >
+              {theme === 'dark' ? <HiOutlineSun /> : <HiOutlineMoon />}
+            </motion.div>
             
             <AnimatePresence>
                {hoveredItem === 'theme' && (

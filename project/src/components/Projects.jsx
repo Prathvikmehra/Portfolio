@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGamepad, FaCode, FaPlay, FaArrowRight } from 'react-icons/fa';
+import { FaGamepad, FaCode, FaPlay, FaArrowRight, FaYoutube } from 'react-icons/fa';
 import cantabilImg from '../assets/cantabil.png';
 import stanleyImg from '../assets/stanley.png';
 import cutsImg from '../assets/cuts.png';
@@ -18,7 +18,8 @@ const projectsData = [
     tags: ['HTML', 'CSS', 'Vite'],
     image: cantabilImg,
     githubLink: 'https://github.com/Prathvikmehra/clone-websites',
-    demoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
+    videoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
+    liveLink: 'https://sensational-muffin-8dd00f.netlify.app/',
   },
   {
     id: '02',
@@ -28,7 +29,8 @@ const projectsData = [
     tags: ['HTML', 'CSS', 'UI/UX'],
     image: stanleyImg,
     githubLink: 'https://github.com/Prathvikmehra/clone-websites',
-    demoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
+    videoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
+    liveLink: 'https://joyful-croissant-2f8d65.netlify.app/',
   },
   {
     id: '03',
@@ -38,7 +40,8 @@ const projectsData = [
     tags: ['CSS Grid', 'Responsive', 'Flexbox'],
     image: cutsImg,
     githubLink: 'https://github.com/Prathvikmehra/clone-websites',
-    demoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
+    videoLink: 'https://www.youtube.com/@Prathvikmehra-ct3rs',
+    liveLink: 'https://teal-platypus-27f874.netlify.app/',
   },
 ];
 
@@ -129,9 +132,10 @@ const Projects = () => {
                                         <span key={tag} style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', opacity: 0.8, fontWeight: 600 }}>#{tag}</span>
                                     ))}
                                 </div>
-                                <div style={{ display: 'flex', gap: '1.5rem', marginTop: 'auto' }}>
-                                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.8rem' }}><FaCode /> CODE</a>
-                                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 700, fontSize: '0.8rem' }}>LIVE DEMO <FaArrowRight /></a>
+                                <div style={{ display: 'flex', gap: '1.2rem', marginTop: 'auto', flexWrap: 'wrap' }}>
+                                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.75rem', textDecoration: 'none', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.8'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}><FaCode /> CODE</a>
+                                    <a href={project.videoLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)', fontWeight: 600, fontSize: '0.75rem', textDecoration: 'none', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity = '0.8'} onMouseLeave={e => e.currentTarget.style.opacity = '1'}><FaYoutube style={{ color: '#FF0000' }} /> VIDEO</a>
+                                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 800, fontSize: '0.75rem', textDecoration: 'none', transition: 'transform 0.2s' }} onMouseEnter={e => e.currentTarget.style.transform = 'translateX(3px)'} onMouseLeave={e => e.currentTarget.style.transform = 'translateX(0)'}>LIVE DEMO <FaArrowRight style={{ fontSize: '0.6rem' }} /></a>
                                 </div>
                             </div>
                         </motion.div>
