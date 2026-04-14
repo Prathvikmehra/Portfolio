@@ -1,16 +1,98 @@
-# React + Vite
+# Prathvik Mehra — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, dark-themed personal portfolio built with **React + Vite**, featuring premium olive-green aesthetics, glassmorphism, smooth animations, and a polished dark/light theme toggle.
 
-Currently, two official plugins are available:
+## 🌐 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Deployed via Vercel / GitHub Pages
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Hero Section** — Dynamic greeting with typewriter animation and social links
+- **About & Skills** — Split layout with animated skill progress bars
+- **Projects** — Cards with live demo and YouTube video links
+- **Hackathons** — Staggered preview cards with full-screen modal detail view:
+  - Certificate display on the left
+  - About + Experience on the right
+  - Flip to view photo memories (actual hackathon photos)
+  - Problem Statement, GitHub repo, and Live Project buttons
+- **Certificates** — Infinite auto-scrolling marquee of achievements
+- **Education** — Academic timeline
+- **Contact** — Email form with EmailJS integration
+- **Navbar** — Floating capsule navbar with icon links, live clock, and theme toggle
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🏆 Hackathons Showcased
+
+### Electrosphere 2k25
+- **Event:** Electrosphere 2025 — 12-hour hackathon
+- **Project:** [KrishiSaathi v2.0](https://github.com/Jivan-Patel/KrishiSaathi_v2.0) — A comprehensive agri-tech platform for Indian farmers
+- **Live Demo:** [krishi-saathi-elite-hack.vercel.app](https://krishi-saathi-elite-hack.vercel.app/)
+- **Role:** UI/UX Designer
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer     | Technology                        |
+|-----------|-----------------------------------|
+| Framework | React 18 + Vite                   |
+| Styling   | Vanilla CSS (custom design system)|
+| Animation | Framer Motion                     |
+| Icons     | React Icons (HI, FA)              |
+| Email     | EmailJS                           |
+| Routing   | react-scroll (smooth anchor nav)  |
+
+---
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/Prathvikmehra/PortFolio.git
+
+# Navigate into the project
+cd portfolio/project
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+```
+
+Visit `http://localhost:5173` in your browser.
+
+---
+
+## 📁 Project Structure
+
+```
+project/
+├── public/
+│   └── games/              # Mini browser games
+├── src/
+│   ├── assets/             # Images, certificates, hackathon photos
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── AboutSkills.jsx
+│   │   ├── Projects.jsx
+│   │   ├── Hackathons.jsx  # New — interactive hackathon cards
+│   │   ├── Certificates.jsx
+│   │   ├── Education.jsx
+│   │   ├── Contact.jsx
+│   │   └── Footer.jsx
+│   ├── App.jsx
+│   └── App.css             # Global design system & all component styles
+└── README.md
+```
+
+---
+
+## 📄 License
+
+MIT — feel free to use this as inspiration for your own portfolio!

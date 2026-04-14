@@ -9,7 +9,8 @@ import {
   HiOutlineBookmark, 
   HiOutlineMail,
   HiOutlineMoon,
-  HiOutlineSun
+  HiOutlineSun,
+  HiOutlineTerminal
 } from 'react-icons/hi';
 import { FaMedal } from 'react-icons/fa';
 
@@ -44,6 +45,7 @@ const Navbar = ({ theme, toggleTheme }) => {
     { name: 'home', icon: <HiOutlineHome /> },
     { name: 'about', icon: <HiOutlineUser /> },
     { name: 'projects', icon: <HiOutlineFolderOpen /> },
+    { name: 'hackathons', icon: <HiOutlineTerminal /> },
     { name: 'certificates', icon: <FaMedal /> },
     { name: 'education', icon: <HiOutlineAcademicCap /> },
     { name: 'contact', icon: <HiOutlineMail /> },
