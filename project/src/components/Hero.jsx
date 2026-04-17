@@ -18,7 +18,7 @@ const Hero = () => {
     React.useEffect(() => {
         const handleTyping = () => {
             const currentFullText = roles[currentRoleIdx];
-            
+
             if (isDeleting) {
                 setDisplayText(currentFullText.substring(0, displayText.length - 1));
             } else {
@@ -38,12 +38,12 @@ const Hero = () => {
     }, [displayText, isDeleting, currentRoleIdx]);
 
     return (
-        <section id="home" style={{ 
-            minHeight: '100vh', 
-            display: 'flex', 
-            alignItems: 'center', 
+        <section id="home" style={{
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
             justifyContent: 'center',
-            paddingTop: 'var(--nav-height)' 
+            paddingTop: 'var(--nav-height)'
         }}>
             <div style={{
                 display: 'flex',
@@ -69,10 +69,10 @@ const Hero = () => {
                         </span>
                     </div>
 
-                    <h1 style={{ 
-                        fontSize: 'clamp(3.5rem, 8vw, 5.5rem)', 
-                        fontWeight: 900, 
-                        lineHeight: 1, 
+                    <h1 style={{
+                        fontSize: 'clamp(3.5rem, 8vw, 5.5rem)',
+                        fontWeight: 900,
+                        lineHeight: 1,
                         marginBottom: '1.5rem',
                         fontFamily: 'var(--font-main)',
                         background: 'none',
@@ -98,14 +98,14 @@ const Hero = () => {
                         </p>
                     </div>
 
-                    <p style={{ 
-                        fontSize: '1.1rem', 
-                        color: 'var(--text-secondary)', 
-                        lineHeight: 1.8, 
-                        maxWidth: '550px', 
-                        marginBottom: '2.5rem' 
+                    <p style={{
+                        fontSize: '1.1rem',
+                        color: 'var(--text-secondary)',
+                        lineHeight: 1.8,
+                        maxWidth: '550px',
+                        marginBottom: '2.5rem'
                     }}>
-                        Building <strong style={{ color: 'var(--text-primary)' }}>fast, scalable MERN apps</strong> with clean UI — from zero to deployed. 
+                        Building <strong style={{ color: 'var(--text-primary)' }}>fast, scalable MERN apps</strong> with clean UI — from zero to deployed.
                         Passionate about crafting premium digital experiences and solving complex problems.
                     </p>
 
@@ -115,7 +115,7 @@ const Hero = () => {
                                 VIEW PROJECTS <span style={{ fontSize: '1.2rem' }}>→</span>
                             </button>
                         </Link>
-                        <a href="https://drive.google.com/file/d/12PmX_ijfItkcKtnQmm9B8wTE16WfedJY/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                        <a href="https://drive.google.com/file/d/1lANlqw5v7I33wjM28_Li4wMeZmIB0gmB/view" target="_blank" rel="noopener noreferrer">
                             <button className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '8px' }}>
                                 RESUME
                             </button>
@@ -132,10 +132,10 @@ const Hero = () => {
                                 { icon: <FaYoutube />, link: 'https://www.youtube.com/@Prathvikmehra-ct3rs' },
                                 { icon: <FaXTwitter />, link: 'https://x.com/prathvik2345' }
                             ].map((social, idx) => (
-                                <a 
+                                <a
                                     key={idx}
-                                    href={social.link} 
-                                    target="_blank" 
+                                    href={social.link}
+                                    target="_blank"
                                     rel="noopener noreferrer"
                                     style={{
                                         width: '40px',
@@ -174,118 +174,118 @@ const Hero = () => {
                     transition={{ duration: 1 }}
                     style={{ position: 'relative', padding: '2rem' }}
                 >
-                        {/* Main Image Container */}
+                    {/* Main Image Container */}
+                    <div style={{
+                        position: 'relative',
+                        width: 'clamp(280px, 40vw, 420px)',
+                        height: 'clamp(280px, 40vw, 420px)',
+                        borderRadius: '50%',
+                        border: '1px solid rgba(163, 230, 53, 0.2)',
+                        padding: '1.5rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        {/* Circular Dotted Ring (Visual Decorative) */}
                         <div style={{
-                            position: 'relative',
-                            width: 'clamp(280px, 40vw, 420px)',
-                            height: 'clamp(280px, 40vw, 420px)',
+                            position: 'absolute',
+                            inset: '-10px',
                             borderRadius: '50%',
-                            border: '1px solid rgba(163, 230, 53, 0.2)',
-                            padding: '1.5rem',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}>
-                            {/* Circular Dotted Ring (Visual Decorative) */}
-                            <div style={{
-                                position: 'absolute',
-                                inset: '-10px',
-                                borderRadius: '50%',
-                                border: '1px dashed rgba(163, 230, 53, 0.3)',
-                                animation: 'spin 20s linear infinite'
-                            }}></div>
+                            border: '1px dashed rgba(163, 230, 53, 0.3)',
+                            animation: 'spin 20s linear infinite'
+                        }}></div>
 
+                        <div style={{
+                            width: '100%',
+                            height: '100%',
+                            borderRadius: '50%',
+                            overflow: 'hidden',
+                            border: '4px solid var(--bg-secondary)',
+                            boxShadow: '0 0 40px rgba(0,0,0,0.5)',
+                            background: 'var(--bg-secondary)'
+                        }}>
+                            <img src={profilePic} alt="Prathvik" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </div>
+
+                        {/* Floating Badge: Location */}
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                            style={{
+                                position: 'absolute',
+                                top: '15%',
+                                left: '-20px',
+                                background: 'rgba(26, 29, 21, 0.9)',
+                                backdropFilter: 'blur(10px)',
+                                padding: '0.6rem 1rem',
+                                borderRadius: '100px',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.6rem',
+                                boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
+                                zIndex: 10
+                            }}
+                        >
+                            <span style={{ fontSize: '0.9rem' }}>📍</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>AHMEDABAD, IN</span>
+                        </motion.div>
+
+                        {/* Availability Spinning Badge */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 1.5, duration: 1 }}
+                            style={{
+                                position: 'absolute',
+                                bottom: '10%',
+                                right: '-30px',
+                                width: '120px',
+                                height: '120px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                zIndex: 10
+                            }}
+                        >
                             <div style={{
+                                position: 'relative',
                                 width: '100%',
                                 height: '100%',
-                                borderRadius: '50%',
-                                overflow: 'hidden',
-                                border: '4px solid var(--bg-secondary)',
-                                boxShadow: '0 0 40px rgba(0,0,0,0.5)',
-                                background: 'var(--bg-secondary)'
+                                animation: 'spin 15s linear infinite'
                             }}>
-                                <img src={profilePic} alt="Prathvik" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%' }}>
+                                    <path
+                                        id="circlePath"
+                                        d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                                        fill="none"
+                                    />
+                                    <text style={{ fontSize: '6.5px', fontWeight: 800, fill: 'var(--accent-primary)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+                                        <textPath xlinkHref="#circlePath">
+                                            • OPEN TO OPPORTUNITIES • AVAILABLE FOR HIRE
+                                        </textPath>
+                                    </text>
+                                </svg>
                             </div>
-
-                            {/* Floating Badge: Location */}
-                            <motion.div
-                                animate={{ y: [0, -10, 0] }}
-                                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                                style={{
-                                    position: 'absolute',
-                                    top: '15%',
-                                    left: '-20px',
-                                    background: 'rgba(26, 29, 21, 0.9)',
-                                    backdropFilter: 'blur(10px)',
-                                    padding: '0.6rem 1rem',
-                                    borderRadius: '100px',
-                                    border: '1px solid rgba(255,255,255,0.1)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.6rem',
-                                    boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-                                    zIndex: 10
-                                }}
-                            >
-                                <span style={{ fontSize: '0.9rem' }}>📍</span>
-                                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>AHMEDABAD, IN</span>
-                            </motion.div>
-
-                            {/* Availability Spinning Badge */}
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: 1.5, duration: 1 }}
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '10%',
-                                    right: '-30px',
-                                    width: '120px',
-                                    height: '120px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    zIndex: 10
-                                }}
-                            >
-                                <div style={{
-                                    position: 'relative',
-                                    width: '100%',
-                                    height: '100%',
-                                    animation: 'spin 15s linear infinite'
-                                }}>
-                                    <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%' }}>
-                                        <path
-                                            id="circlePath"
-                                            d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                                            fill="none"
-                                        />
-                                        <text style={{ fontSize: '6.5px', fontWeight: 800, fill: 'var(--accent-primary)', letterSpacing: '2px', textTransform: 'uppercase' }}>
-                                            <textPath xlinkHref="#circlePath">
-                                                • OPEN TO OPPORTUNITIES • AVAILABLE FOR HIRE 
-                                            </textPath>
-                                        </text>
-                                    </svg>
-                                </div>
-                                <div style={{
-                                    position: 'absolute',
-                                    width: '40px',
-                                    height: '40px',
-                                    borderRadius: '50%',
-                                    background: 'var(--accent-primary)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: '#000',
-                                    fontSize: '1rem',
-                                    fontWeight: 900
-                                }}>
-                                    P
-                                </div>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                </div>
+                            <div style={{
+                                position: 'absolute',
+                                width: '40px',
+                                height: '40px',
+                                borderRadius: '50%',
+                                background: 'var(--accent-primary)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#000',
+                                fontSize: '1rem',
+                                fontWeight: 900
+                            }}>
+                                P
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+            </div>
 
             <style>{`
                 @keyframes spin {
