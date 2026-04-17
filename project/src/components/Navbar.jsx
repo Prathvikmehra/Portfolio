@@ -13,6 +13,7 @@ import {
   HiOutlineTerminal
 } from 'react-icons/hi';
 import { FaMedal } from 'react-icons/fa';
+import { SiFigma } from 'react-icons/si';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -42,13 +43,14 @@ const Navbar = ({ theme, toggleTheme }) => {
   };
 
   const navItems = [
-    { name: 'home', icon: <HiOutlineHome /> },
-    { name: 'about', icon: <HiOutlineUser /> },
-    { name: 'projects', icon: <HiOutlineFolderOpen /> },
-    { name: 'hackathons', icon: <HiOutlineTerminal /> },
-    { name: 'certificates', icon: <FaMedal /> },
-    { name: 'education', icon: <HiOutlineAcademicCap /> },
-    { name: 'contact', icon: <HiOutlineMail /> },
+    { name: 'home',         label: 'home',         icon: <HiOutlineHome     style={{ color: '#cbd5e1' }} /> },
+    { name: 'about',        label: 'about',        icon: <HiOutlineUser     style={{ color: '#7dd3fc' }} /> },
+    { name: 'projects',     label: 'projects',     icon: <HiOutlineFolderOpen style={{ color: '#fbbf24' }} /> },
+    { name: 'figmadesigns', label: 'figma',        icon: <SiFigma           style={{ color: '#a259ff' }} /> },
+    { name: 'hackathons',   label: 'hackathons',   icon: <HiOutlineTerminal style={{ color: '#f87171' }} /> },
+    { name: 'certificates', label: 'certificates', icon: <FaMedal           style={{ color: '#fcd34d' }} /> },
+    { name: 'education',    label: 'education',    icon: <HiOutlineAcademicCap style={{ color: '#5eead4' }} /> },
+    { name: 'contact',      label: 'contact',      icon: <HiOutlineMail     style={{ color: '#a3e635' }} /> },
   ];
 
   return (
@@ -70,8 +72,8 @@ const Navbar = ({ theme, toggleTheme }) => {
             >
               <Link
                 to={item.name}
-                smooth="easeInOutQuart"
-                duration={800}
+                smooth={true}
+                duration={300}
                 offset={-70}
                 spy={true}
                 activeClass="active-capsule"
@@ -125,7 +127,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                       zIndex: 100
                     }}
                   >
-                    {item.name}
+                    {item.label || item.name}
                   </motion.div>
                 )}
               </AnimatePresence>
