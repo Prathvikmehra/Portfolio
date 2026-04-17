@@ -3,6 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import hackPhoto1 from '../assets/hack-photo-1.jpeg';
 import hackPhoto2 from '../assets/hack-photo-2.jpeg';
+import electrosphereCert from '../assets/electrosphere-cert.jpg';
+import craftathonImg from '../assets/craftathon.png';
+import hackPhoto3 from '../assets/hackathon-photo-3.jpg';
+import hackPhoto4 from '../assets/hackathon-photo-4.png';
 
 const hackathonData = [
   {
@@ -13,7 +17,7 @@ const hackathonData = [
     problemStatement: 'Indian farmers face critical challenges including lack of access to accurate localized crop information, real-time market prices, reliable logistics, and peer knowledge sharing. The core problem was bridging this technology gap by creating a highly scalable, multilingual platform that offers direct market access and actionable agricultural intelligence.',
     liveUrl: 'https://krishi-saathi-elite-hack.vercel.app/',
     githubUrl: 'https://github.com/Jivan-Patel/KrishiSaathi_v2.0',
-    certificate: 'https://picsum.photos/seed/cert1/800/600',
+    certificate: electrosphereCert,
     photos: [
       hackPhoto1,
       hackPhoto2
@@ -21,19 +25,17 @@ const hackathonData = [
   },
   {
     id: 2,
-    title: 'Web3 Buildathon',
-    about: 'A week-long buildathon focused on decentralized applications. Our team created a smart contract-based voting system for transparent remote elections.',
-    experience: 'Working with smart contracts taught me a lot about security and decentralized logic. I collaborated with a talented backend developer, which greatly improved my understanding of connecting React frontends directly to the blockchain. We even got a special mention for our clean UI design.',
-    problemStatement: 'Current remote voting mechanisms lack transparency and are prone to tampering. Organizers needed a tamper-proof, auditable system to conduct global community votes without relying on a centralized database.',
-    projectDetails: 'Our project, "ClearVote", leveraged Solidity smart contracts on the Ethereum testnet. We built a beautiful React dashboard for voters to connect their wallets, cast their verifiable vote, and analyze real-time election result cryptographically. I handled the entire frontend and Web3.js integration.',
-    liveUrl: '#',
-    githubUrl: '#',
-    certificate: 'https://picsum.photos/seed/cert2/800/600',
+    title: 'Craftathon',
+    about: 'Participated in the intense Craftathon event focused on innovative technical builds. Our team created a unique project under tight constraints.',
+    experience: 'This hackathon taught me a lot about rapid prototyping and working efficiently within a team. I collaborated with talented developers, which greatly improved my understanding of connecting frontends directly to complex backend architectures. We even got a special mention for our clean UI design.',
+    problemStatement: 'Historically, hospital waiting rooms suffer from severe overcrowding and inefficiency due to static appointment slots. Actual consultation durations vary wildly based on patient demographics and visit types, making fixed schedules obsolete. Furthermore, unpredictable patient no-shows result in unutilized doctor bandwidth while other critical patients face endless delays. Traditional healthcare scheduling systems fail to dynamically adapt to these real-time events. There was a critical need for an intelligent platform capable of accurately predicting exact consultation lengths, calculating no-show probabilities, and dynamically optimizing the queue and doctor utilization in real time.',
+    projectDetails: 'We built "TimeCure", a next-generation predictive healthcare platform. Our dual-AI engine utilizes regression for consultation time prediction and classification for no-show intelligence. Built with React 19, Vite, Node.js, MongoDB, and a Python Flask ML service, our platform offers real-time queue syncing, dynamic wait times, and high-risk SMS reminders. It effectively optimizes scheduling by dynamically updating doctors and patients based on live, event-driven clinic throughput.',
+    liveUrl: 'https://cortex-crew-time-cure.vercel.app/',
+    githubUrl: 'https://github.com/Prathvikmehra/CortexCrew_TimeCure',
+    certificate: craftathonImg,
     photos: [
-      'https://picsum.photos/seed/web1/400/300',
-      'https://picsum.photos/seed/web2/400/300',
-      'https://picsum.photos/seed/web3/400/300',
-      'https://picsum.photos/seed/web4/400/300'
+      hackPhoto3,
+      hackPhoto4
     ]
   }
 ];

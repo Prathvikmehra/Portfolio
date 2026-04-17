@@ -117,7 +117,7 @@ const Hero = () => {
                         </Link>
                         <a href="https://drive.google.com/file/d/1lANlqw5v7I33wjM28_Li4wMeZmIB0gmB/view" target="_blank" rel="noopener noreferrer">
                             <button className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '8px' }}>
-                                RESUME
+                                VIEW RESUME
                             </button>
                         </a>
                     </div>

@@ -21,7 +21,7 @@ const resetStreakBtn = document.querySelector('#resetStreakBtn');
 // ========================================
 // Game State Variables
 // ========================================
-
+let gameOver = false;
 let colors = []; // Array to store all color options
 let correctColor = ''; // The target color to guess
 let currentStreak = 0; // Current consecutive correct guesses
@@ -111,8 +111,13 @@ function pickCorrectColor() {
 
 // Setup new game round
 function setupGame() {
+    gameOver = false;
     // Generate new colors
     colors = generateColors(numColors);
+
+    colorBoxes.forEach(box => {
+        box.style.pointerEvents = "auto";
+    });
     
     // Pick correct answer
     correctColor = pickCorrectColor();
@@ -145,26 +150,31 @@ function setupGame() {
 
 // Handle color box click
 function handleColorClick(event) {
+    if (gameOver) return;   // ✅ STOP extra clicks
+
     const clickedBox = event.target;
     const clickedColor = clickedBox.style.backgroundColor;
-    
-    // Check if clicked color matches correct answer
+
     if (clickedColor === correctColor) {
-        // Correct answer!
         handleCorrectGuess(clickedBox);
     } else {
-        // Wrong answer!
         handleWrongGuess(clickedBox);
     }
 }
 
 // Handle correct guess
 function handleCorrectGuess(clickedBox) {
+    gameOver = true;
     // Update streak
     currentStreak++;
+
+    // Disable all boxes
+    colorBoxes.forEach(box => {
+    box.style.pointerEvents = "none";
+    });
    
-    //    Correct Color Glows When Clicked
-        clickedBox.style.border = "4px solid yellow";
+    // Correct Color Glows When Clicked
+    clickedBox.style.border = "4px solid yellow";
     
     // Check for new best streak
     if (currentStreak > bestStreak) {

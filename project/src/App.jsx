@@ -5,6 +5,7 @@ import AboutSkills from './components/AboutSkills';
 import Education from './components/Education';
 import Projects from './components/Projects';
 import Hackathons from './components/Hackathons';
+import FigmaDesigns from './components/FigmaDesigns';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -27,6 +28,7 @@ function App() {
       <Hero />
       <AboutSkills />
       <Projects />
+      <FigmaDesigns />
       <Hackathons />
       <Certificates />
       <Education />

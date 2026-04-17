@@ -33,6 +33,12 @@ A modern, dark-themed personal portfolio built with **React + Vite**, featuring 
 - **Live Demo:** [krishi-saathi-elite-hack.vercel.app](https://krishi-saathi-elite-hack.vercel.app/)
 - **Role:** UI/UX Designer
 
+### Craftathon
+- **Event:** Craftathon — Innovative technical build event
+- **Project:** [TimeCure](https://cortex-crew-time-cure.vercel.app/) — Next-generation AI healthcare productivity platform
+- **GitHub:** [CortexCrew_TimeCure](https://github.com/Prathvikmehra/CortexCrew_TimeCure)
+- **Role:** Frontend Architecture & UI/UX
+
 ---
 
 ## 🛠️ Tech Stack
