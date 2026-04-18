@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Link as ScrollLink } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   HiOutlineHome, 
@@ -19,6 +20,22 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [time, setTime] = useState(new Date());
   const [hoveredItem, setHoveredItem] = useState(null);
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Scroll to hash when returning to home from another page
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      setTimeout(() => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -70,36 +87,64 @@ const Navbar = ({ theme, toggleTheme }) => {
               onMouseEnter={() => setHoveredItem(item.name)}
               onMouseLeave={() => setHoveredItem(null)}
             >
-              <Link
-                to={item.name}
-                smooth={true}
-                duration={300}
-                offset={-70}
-                spy={true}
-                activeClass="active-capsule"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  fontSize: '1.4rem',
-                  color: 'var(--text-secondary)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                <motion.div 
-                  className="nav-icon-wrapper"
-                  whileTap={{ scale: 0.75 }}
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              {location.pathname === '/' ? (
+                <ScrollLink
+                  to={item.name}
+                  smooth={true}
+                  duration={300}
+                  offset={-70}
+                  spy={true}
+                  activeClass="active-capsule"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    fontSize: '1.4rem',
+                    color: 'var(--text-secondary)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                  }}
                 >
-                  {item.icon}
-                </motion.div>
-              </Link>
+                  <motion.div 
+                    className="nav-icon-wrapper"
+                    whileTap={{ scale: 0.75 }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    {item.icon}
+                  </motion.div>
+                </ScrollLink>
+              ) : (
+                <div
+                  onClick={() => navigate(`/#${item.name}`)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    fontSize: '1.4rem',
+                    color: 'var(--text-secondary)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  <motion.div 
+                    className="nav-icon-wrapper"
+                    whileTap={{ scale: 0.75 }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  >
+                    {item.icon}
+                  </motion.div>
+                </div>
+              )}
               
               <AnimatePresence>
                 {hoveredItem === item.name && (

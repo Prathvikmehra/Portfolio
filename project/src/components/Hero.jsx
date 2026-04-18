@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaYoutube, FaVideo } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode } from 'react-icons/si';
@@ -110,11 +111,11 @@ const Hero = () => {
                     </p>
 
                     <div style={{ display: 'flex', gap: '1.2rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
-                        <Link to="projects" smooth={true} duration={500} offset={-70}>
+                        <RouterLink to="/projects" style={{ textDecoration: 'none' }}>
                             <button className="btn btn-primary" style={{ padding: '1rem 2.5rem', display: 'flex', alignItems: 'center', gap: '0.8rem', borderRadius: '8px' }}>
-                                VIEW PROJECTS <span style={{ fontSize: '1.2rem' }}>→</span>
+                                VIEW FULL PROJECTS <span style={{ fontSize: '1.2rem' }}>→</span>
                             </button>
-                        </Link>
+                        </RouterLink>
                         <a href="https://drive.google.com/file/d/1lANlqw5v7I33wjM28_Li4wMeZmIB0gmB/view" target="_blank" rel="noopener noreferrer">
                             <button className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '8px' }}>
                                 VIEW RESUME
@@ -126,11 +127,11 @@ const Hero = () => {
                         <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Find me on</span>
                         <div style={{ display: 'flex', gap: '0.8rem' }}>
                             {[
-                                { icon: <FaGithub />, link: 'https://github.com/Prathvikmehra' },
-                                { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/prathvik-mehra-9a3398379/' },
-                                { icon: <SiLeetcode />, link: 'https://leetcode.com/u/phantomleo/' },
-                                { icon: <FaYoutube />, link: 'https://www.youtube.com/@Prathvikmehra-ct3rs' },
-                                { icon: <FaXTwitter />, link: 'https://x.com/prathvik2345' }
+                                { icon: <FaGithub />, link: 'https://github.com/Prathvikmehra', color: '#ffffff' },
+                                { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/prathvik-mehra-9a3398379/', color: '#0A66C2' },
+                                { icon: <SiLeetcode />, link: 'https://leetcode.com/u/phantomleo/', color: '#FFA116' },
+                                { icon: <FaYoutube />, link: 'https://www.youtube.com/@Prathvikmehra-ct3rs', color: '#FF0000' },
+                                { icon: <FaXTwitter />, link: 'https://x.com/prathvik2345', color: '#ffffff' }
                             ].map((social, idx) => (
                                 <a
                                     key={idx}
@@ -150,9 +151,9 @@ const Hero = () => {
                                         transition: 'all 0.3s ease'
                                     }}
                                     onMouseEnter={(e) => {
-                                        e.currentTarget.style.borderColor = 'var(--accent-primary)';
-                                        e.currentTarget.style.color = 'var(--accent-primary)';
-                                        e.currentTarget.style.background = 'rgba(163, 230, 53, 0.05)';
+                                        e.currentTarget.style.borderColor = social.color;
+                                        e.currentTarget.style.color = social.color;
+                                        e.currentTarget.style.background = `${social.color}1a`;
                                     }}
                                     onMouseLeave={(e) => {
                                         e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';

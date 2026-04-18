@@ -31,6 +31,13 @@ const designsData = [
         description: 'A fully conceptualized e-commerce prototype born entirely from imagination. This interactive design maps out a seamless, custom shopping experience—demonstrating innovative user journeys, clean layouts, and a purely original take on modern online retail.',
         image: 'https://res.cloudinary.com/dgg85vi0a/image/upload/v1776428677/Screenshot_2026-04-17_175421_zclrgm.png',
         link: 'https://www.figma.com/proto/WbdDXgocReEKjQfS5zgrTz/edzo--College-?page-id=4297%3A49433&node-id=4462-25957&starting-point-node-id=4462%3A25957&t=0xbMjIURQgO33VQi-1',
+    },
+    {
+        id: '05',
+        title: 'Medical Website Design',
+        description: 'A clean and professional medical website layout designed to streamline patient appointments, with clear navigation and essential healthcare service sections.',
+        image: 'https://res.cloudinary.com/dgg85vi0a/image/upload/v1776486645/Screenshot_2026-04-18_095524_hqzods.png',
+        link: 'https://www.figma.com/design/XtKHk9ncvfpAby69E4B51B/Untitled?node-id=0-1&t=zn4Yc8WGz65nnVWS-1',
     }
 ];
 
@@ -112,7 +119,7 @@ const FigmaDesigns = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    
+
                                     {/* Project Details Column */}
                                     <td style={{ padding: '1.5rem', verticalAlign: 'middle', border: 'none', borderBottom: 'none' }}>
                                         <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{design.title}</h3>
@@ -158,13 +165,13 @@ const FigmaDesigns = () => {
                                         </a>
                                     </td>
                                 </motion.tr>
-                            ))}
+                    ))}
                         </tbody>
                     </table>
-                </div>
+                                </div>
             </div>
-        </section>
-    );
+                    </section>
+                    );
 };
 
-export default FigmaDesigns;
+                    export default FigmaDesigns;

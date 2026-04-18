@@ -46,10 +46,10 @@ const projectsData = [
 ];
 
 const gamesData = [
-  { title: 'Color Guesser', image: colorGuesserImg, link: '/games/color-guesser/index.html', description: 'Test your RGB color knowledge by guessing the correct values in this fun interactive game.' },
-  { title: 'Typing Speed', image: typingGameImg, link: '/games/typing-game/index.html', description: 'Challenge your WPM and accuracy with this real-time typing speed test and keyboard trainer.' },
-  { title: 'Whack-a-Mole', image: whackAMoleImg, link: '/games/whack-a-mole/index.html', description: 'Classic arcade fun! Hit those moles as fast as they pop up to reach the highest score.' },
-  { title: 'To-Do List', image: todoListImg, link: '/games/todo-list/index.html', description: 'A sleek and functional productivity app to keep your daily tasks organized and on track.' },
+  { title: 'Color Guesser', image: colorGuesserImg, link: 'https://games-wf1s.vercel.app/', description: 'Test your RGB color knowledge by guessing the correct values in this fun interactive game.' },
+  { title: 'Typing Speed', image: typingGameImg, link: 'https://games-o6s5.vercel.app/', description: 'Challenge your WPM and accuracy with this real-time typing speed test and keyboard trainer.' },
+  { title: 'Whack-a-Mole', image: whackAMoleImg, link: 'https://games-pvd1.vercel.app/', description: 'Classic arcade fun! Hit those moles as fast as they pop up to reach the highest score.' },
+  { title: 'To-Do List', image: todoListImg, link: 'https://games-r2dq.vercel.app/', description: 'A sleek and functional productivity app to keep your daily tasks organized and on track.' },
 ];
 
 const Projects = () => {
