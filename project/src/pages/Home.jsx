@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero';
 import AboutSkills from '../components/AboutSkills';
-import Projects from '../components/Projects';
-import FigmaDesigns from '../components/FigmaDesigns';
-import Hackathons from '../components/Hackathons';
-import Certificates from '../components/Certificates';
-import Education from '../components/Education';
-import Contact from '../components/Contact';
 import SEO from '../components/SEO';
+
+const Projects = lazy(() => import('../components/Projects'));
+const FigmaDesigns = lazy(() => import('../components/FigmaDesigns'));
+const Hackathons = lazy(() => import('../components/Hackathons'));
+const Certificates = lazy(() => import('../components/Certificates'));
+const Education = lazy(() => import('../components/Education'));
+const Contact = lazy(() => import('../components/Contact'));
+
+const SectionFallback = () => (
+  <div style={{ height: '30vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)' }}>
+    <span style={{ opacity: 0.7 }}>Loading content...</span>
+  </div>
+);
 
 const Home = () => {
   return (
@@ -19,12 +26,14 @@ const Home = () => {
       />
       <Hero />
       <AboutSkills />
-      <Projects />
-      <FigmaDesigns />
-      <Hackathons />
-      <Certificates />
-      <Education />
-      <Contact />
+      <Suspense fallback={<SectionFallback />}>
+        <Projects />
+        <FigmaDesigns />
+        <Hackathons />
+        <Certificates />
+        <Education />
+        <Contact />
+      </Suspense>
     </>
   );
 };

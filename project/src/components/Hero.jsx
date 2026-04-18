@@ -127,17 +127,18 @@ const Hero = () => {
                         <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Find me on</span>
                         <div style={{ display: 'flex', gap: '0.8rem' }}>
                             {[
-                                { icon: <FaGithub />, link: 'https://github.com/Prathvikmehra', color: '#ffffff' },
-                                { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/prathvik-mehra-9a3398379/', color: '#0A66C2' },
-                                { icon: <SiLeetcode />, link: 'https://leetcode.com/u/phantomleo/', color: '#FFA116' },
-                                { icon: <FaYoutube />, link: 'https://www.youtube.com/@Prathvikmehra-ct3rs', color: '#FF0000' },
-                                { icon: <FaXTwitter />, link: 'https://x.com/prathvik2345', color: '#ffffff' }
+                                { name: 'GitHub', icon: <FaGithub />, link: 'https://github.com/Prathvikmehra', color: '#ffffff' },
+                                { name: 'LinkedIn', icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/prathvik-mehra-9a3398379/', color: '#0A66C2' },
+                                { name: 'LeetCode', icon: <SiLeetcode />, link: 'https://leetcode.com/u/prathvik__mehra/', color: '#FFA116' },
+                                { name: 'YouTube', icon: <FaYoutube />, link: 'https://www.youtube.com/@Coding_Gurus_', color: '#FF0000' },
+                                { name: 'X', icon: <FaXTwitter />, link: 'https://x.com/prathvik2345', color: '#ffffff' }
                             ].map((social, idx) => (
                                 <a
                                     key={idx}
                                     href={social.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label={social.name}
                                     style={{
                                         width: '40px',
                                         height: '40px',
@@ -205,7 +206,7 @@ const Hero = () => {
                             boxShadow: '0 0 40px rgba(0,0,0,0.5)',
                             background: 'var(--bg-secondary)'
                         }}>
-                            <img src={profilePic} alt="Prathvik" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img src={profilePic} alt="Prathvik" fetchPriority="high" loading="eager" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
 
                         {/* Floating Badge: Location */}

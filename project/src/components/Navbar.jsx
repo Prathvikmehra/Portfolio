@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
+import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   HiOutlineHome, 
@@ -87,14 +86,9 @@ const Navbar = ({ theme, toggleTheme }) => {
               onMouseEnter={() => setHoveredItem(item.name)}
               onMouseLeave={() => setHoveredItem(null)}
             >
-              {location.pathname === '/' ? (
-                <ScrollLink
-                  to={item.name}
-                  smooth={true}
-                  duration={300}
-                  offset={-70}
-                  spy={true}
-                  activeClass="active-capsule"
+              <a
+                  href={location.pathname === '/' ? `#${item.name}` : `/#${item.name}`}
+                  aria-label={`Navigate to ${item.label}`}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -104,7 +98,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                     borderRadius: '50%',
                     fontSize: '1.4rem',
                     color: 'var(--text-secondary)',
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                     transition: 'all 0.3s ease',
                   }}
                 >
@@ -117,34 +111,7 @@ const Navbar = ({ theme, toggleTheme }) => {
                   >
                     {item.icon}
                   </motion.div>
-                </ScrollLink>
-              ) : (
-                <div
-                  onClick={() => navigate(`/#${item.name}`)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    fontSize: '1.4rem',
-                    color: 'var(--text-secondary)',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <motion.div 
-                    className="nav-icon-wrapper"
-                    whileTap={{ scale: 0.75 }}
-                    whileHover={{ scale: 1.15 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  >
-                    {item.icon}
-                  </motion.div>
-                </div>
-              )}
+                </a>
               
               <AnimatePresence>
                 {hoveredItem === item.name && (
