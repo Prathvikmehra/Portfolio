@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const educationData = [
   {
@@ -27,10 +27,6 @@ const educationData = [
 
 const Education = () => {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center start"]
-  });
 
   return (
     <section id="education" className="section" ref={ref} style={{ position: 'relative' }}>
@@ -39,8 +35,11 @@ const Education = () => {
       <div className="timeline-container" style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', padding: '2rem 0' }}>
         {/* Central Line */}
         <motion.div
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          viewport={{ once: true, margin: "-100px" }}
           style={{
-            scaleY: scrollYProgress,
             position: 'absolute',
             left: '50%',
             top: 0,

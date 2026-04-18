@@ -5,7 +5,8 @@ import { Link as RouterLink } from 'react-router-dom';
 import { FaGithub, FaLinkedin, FaYoutube, FaVideo } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode } from 'react-icons/si';
-import profilePic from '../assets/profile.jpg';
+
+const profilePic = '/profile.jpg';
 
 const Hero = () => {
     const roles = ["UI/UX Designer", "MERN Stack Developer", "Problem Solver"];
@@ -116,8 +117,8 @@ const Hero = () => {
                                 VIEW FULL PROJECTS <span style={{ fontSize: '1.2rem' }}>→</span>
                             </button>
                         </RouterLink>
-                        <a href="https://drive.google.com/file/d/1lANlqw5v7I33wjM28_Li4wMeZmIB0gmB/view" target="_blank" rel="noopener noreferrer">
-                            <button className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '8px' }}>
+                        <a href="https://drive.google.com/file/d/1lANlqw5v7I33wjM28_Li4wMeZmIB0gmB/view" target="_blank" rel="noopener noreferrer" style={{ minWidth: '48px', minHeight: '48px', display: 'inline-flex' }}>
+                            <button className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '8px', cursor: 'pointer', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 VIEW RESUME
                             </button>
                         </a>

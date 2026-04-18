@@ -24,16 +24,18 @@ const Home = () => {
         description="Welcome to my portfolio! I build fast, scalable MERN apps with premium clean UI. From zero to deployed, solving complex problems."
         url="https://prathvik.com/"
       />
-      <Hero />
-      <AboutSkills />
-      <Suspense fallback={<SectionFallback />}>
-        <Projects />
-        <FigmaDesigns />
-        <Hackathons />
-        <Certificates />
-        <Education />
-        <Contact />
-      </Suspense>
+      <main>
+        <Hero />
+        <AboutSkills />
+        <Suspense fallback={<SectionFallback />}>
+          <Projects />
+          <FigmaDesigns />
+          <Hackathons />
+          <Certificates />
+          <Education />
+          <Contact />
+        </Suspense>
+      </main>
     </>
   );
 };

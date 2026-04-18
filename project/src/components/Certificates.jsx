@@ -2,12 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
-import intellipaatPdf from '../assets/intellipaat-certificate.pdf';
+const intellipaatPdf = '/intellipaat-certificate.pdf';
 import intellipaatImg from '../assets/intellipaat-certificate.png';
 import tcsImg from '../assets/tcs-certificate.jpg';
 import codingDataImg from '../assets/coding-data-certificate.jpg';
-import hackathonPdf from '../assets/hackathon-certificate.pdf';
-import claudeCodePdf from '../assets/claude-code-certificate.pdf';
+const hackathonPdf = '/hackathon-certificate.pdf';
+const claudeCodePdf = '/claude-code-certificate.pdf';
 // import bytebattleImg from '../assets/bytebattle-certificate.png';
 
 const certificates = [
