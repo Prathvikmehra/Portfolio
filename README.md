@@ -1,6 +1,6 @@
 # 🌐 Premium Personal Portfolio
 
-🚀 Live Demo: https://portfolio-coral-nu-z4290z6b23.vercel.app/
+🚀 Live Demo: https://mehra-prathvik.vercel.app/
 
 ---
 
