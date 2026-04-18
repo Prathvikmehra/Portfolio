@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFigma } from 'react-icons/fa';
-import figmaDesignImg from '../assets/figma-design.svg';
 
 const designsData = [
     {

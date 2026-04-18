@@ -4,10 +4,6 @@ import { FaGamepad, FaCode, FaPlay, FaArrowRight, FaYoutube } from 'react-icons/
 import cantabilImg from '../assets/cantabil.png';
 import stanleyImg from '../assets/stanley.png';
 import cutsImg from '../assets/cuts.png';
-import colorGuesserImg from '../assets/color-guesser.png';
-import typingGameImg from '../assets/typing-game.png';
-import whackAMoleImg from '../assets/whack-a-mole.png';
-import todoListImg from '../assets/todo-list.png';
 
 const projectsData = [
   {
@@ -46,10 +42,10 @@ const projectsData = [
 ];
 
 const gamesData = [
-  { title: 'Color Guesser', image: colorGuesserImg, link: 'https://games-wf1s.vercel.app/', description: 'Test your RGB color knowledge by guessing the correct values in this fun interactive game.' },
-  { title: 'Typing Speed', image: typingGameImg, link: 'https://games-o6s5.vercel.app/', description: 'Challenge your WPM and accuracy with this real-time typing speed test and keyboard trainer.' },
-  { title: 'Whack-a-Mole', image: whackAMoleImg, link: 'https://games-pvd1.vercel.app/', description: 'Classic arcade fun! Hit those moles as fast as they pop up to reach the highest score.' },
-  { title: 'To-Do List', image: todoListImg, link: 'https://games-r2dq.vercel.app/', description: 'A sleek and functional productivity app to keep your daily tasks organized and on track.' },
+  { title: 'Color Guesser', image: 'https://res.cloudinary.com/dgg85vi0a/image/upload/v1776500654/Screenshot_2026-04-18_135358_hn89u0.png', link: 'https://games-wf1s.vercel.app/', description: 'Test your RGB color knowledge by guessing the correct values in this fun interactive game.' },
+  { title: 'Typing Speed', image: 'https://res.cloudinary.com/dgg85vi0a/image/upload/v1776500330/Screenshot_2026-04-18_134806_slkqj3.png', link: 'https://games-o6s5.vercel.app/', description: 'Challenge your WPM and accuracy with this real-time typing speed test and keyboard trainer.' },
+  { title: 'Whack-a-Mole', image: 'https://res.cloudinary.com/dgg85vi0a/image/upload/v1776500408/Screenshot_2026-04-18_134916_jucr78.png', link: 'https://games-pvd1.vercel.app/', description: 'Classic arcade fun! Hit those moles as fast as they pop up to reach the highest score.' },
+  { title: 'To-Do List', image: 'https://res.cloudinary.com/dgg85vi0a/image/upload/v1776500450/Screenshot_2026-04-18_135037_ybcxzo.png', link: 'https://games-r2dq.vercel.app/', description: 'A sleek and functional productivity app to keep your daily tasks organized and on track.' },
 ];
 
 const Projects = () => {
