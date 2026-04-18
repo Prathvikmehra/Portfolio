@@ -1,6 +1,6 @@
 # 🌐 Premium Personal Portfolio
 
-🚀 Live Demo: [https://portfolio-prathvik.netlify.app/](https://portfolio-prathvik.netlify.app/)
+🚀 Live Demo: https://portfolio-coral-nu-z4290z6b23.vercel.app/
 
 ---
 
