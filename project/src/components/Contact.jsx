@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { FaPhone, FaEnvelope, FaWhatsapp, FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -29,6 +30,34 @@ const contactItems = [
 ];
 
 const Contact = () => {
+  const formRef = useRef();
+  const [isSending, setIsSending] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' or 'error'
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setSubmitStatus(null);
+
+    // Replace the placeholders with your actual EmailJS credentials
+    // You can get these by signing up at https://www.emailjs.com/
+    const serviceId = 'service_wg8s5zb';
+    const templateId = 'template_x38jahb';
+    const publicKey = 'kl5NP5-HpO3EYadlZ';
+
+    emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
+      .then((result) => {
+          setIsSending(false);
+          setSubmitStatus('success');
+          formRef.current.reset();
+          setTimeout(() => setSubmitStatus(null), 5000);
+      }, (error) => {
+          setIsSending(false);
+          setSubmitStatus('error');
+          console.error("EmailJS Error:", error.text);
+      });
+  };
+
   return (
     <section id="contact">
       <h2>Get In Touch</h2>
@@ -150,13 +179,25 @@ const Contact = () => {
           }}>
             Send Me a Message
           </h3>
-          <form className="contact-form">
-            <input type="text" placeholder="Your Name" className="form-input" />
-            <input type="email" placeholder="Your Email" className="form-input" />
-            <textarea rows="5" placeholder="Your Message" className="form-input" />
-            <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-              Send Message
+          <form ref={formRef} onSubmit={sendEmail} className="contact-form">
+            <input type="text" name="user_name" placeholder="Your Name" required className="form-input" style={{ marginBottom: '1rem' }} />
+            <input type="email" name="user_email" placeholder="Your Email" required className="form-input" style={{ marginBottom: '1rem' }} />
+            <textarea rows="5" name="message" placeholder="Your Message" required className="form-input" style={{ marginBottom: '1.5rem' }} />
+            <button type="submit" className="btn btn-primary" disabled={isSending} style={{ width: '100%', opacity: isSending ? 0.7 : 1, cursor: isSending ? 'not-allowed' : 'pointer' }}>
+              {isSending ? 'Sending...' : 'Send Message'}
             </button>
+            
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <p style={{ color: '#25D366', marginTop: '1rem', fontSize: '0.9rem', textAlign: 'center', fontWeight: 'bold' }}>
+                Message sent successfully! I'll get back to you soon.
+              </p>
+            )}
+            {submitStatus === 'error' && (
+              <p style={{ color: '#EA4335', marginTop: '1rem', fontSize: '0.9rem', textAlign: 'center', fontWeight: 'bold' }}>
+                Failed to send message. Please check your console or try again later.
+              </p>
+            )}
           </form>
         </motion.div>
       </div>
