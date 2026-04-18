@@ -21,8 +21,6 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
   
   const location = useLocation();
-  const navigate = useNavigate();
-
   // Scroll to hash when returning to home from another page
   useEffect(() => {
     if (location.pathname === '/' && location.hash) {
